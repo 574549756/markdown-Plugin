@@ -1,12 +1,11 @@
 <template>
     <div id="controller">
-        <el-form>
-            <el-form-item label="Domain">
+        <el-form id="domainForm">
+            <el-form-item>
                 <el-input v-model="currentDomain.domain"></el-input>
             </el-form-item>
         </el-form>
-        <el-button id="showMarkdown" v-on:click="preview">markdown</el-button>
-        <el-button id="enter" v-on:click="EnterDomain">Enter</el-button>        
+        <el-button id="enter" v-on:click="EnterDomain">Enter</el-button>               
     </div>
 </template>
 
@@ -14,23 +13,43 @@
 export default {
   props: ['currentDomain'],
   methods: {
-    preview() {
-      this.$emit('preview')
-    },
     EnterDomain() {
       console.log(this.currentDomain.domain)
-      document.getElementById('displayDomain').src =
-        'http://' + `${this.currentDomain.domain}`
+      document.getElementById('displayDomain').src = `${
+        this.currentDomain.domain
+      }`
     }
   }
 }
 </script>
 
 <style lang="scss">
+$designWidth: 1920;
+@function px($px) {
+  @return $px/$designWidth * 10 + rem;
+}
+
 #controller {
+  align-items: center;
   display: flex;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  bottom: 0;
+  width: 76%;
+  height: px(100);
+  #enter,
+  #showMarkdown {
+    height: px(40);
+  }
+  #domainForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: px(10);
+    width: 100%;
+    .el-form-item {
+      margin: 0;
+      width: 100%;
+    }
+  }
 }
 </style>

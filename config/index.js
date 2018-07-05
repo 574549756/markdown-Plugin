@@ -49,7 +49,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/lalu-markdown/dist',
+    assetsPublicPath: '/lalu-markdown/dist/',
 
     /**
      * Source Maps
